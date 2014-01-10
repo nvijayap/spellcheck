@@ -1,14 +1,20 @@
 <br/>
 <%= form_tag("/spellcheck", method: "post") do %>
   <% if params[:q] %>
-		<% if params[:yn] %>
-				<%= "'" + params[:q] + "' has passed Spell Check "%>
+		<% if params[:q].blank? %>
+			<pr><%= "Spell Check CANNOT be done on blank/empty word !" %></pr>
+		<% else %>
+			<% if params[:yn] %>
+				<pg><%= "'" + params[:q] + "' has passed Spell Check" %></pg>
 			<% else %>
-				<%= "'" + params[:q] + "' has FAILED Spell Check "%>
+				<pr><%= "'" + params[:q] + "' has FAILED Spell Check" %></pr>
 			<% end %>
+		<% end %>
 	<% end %>
-	<br/><br/>
+	<br/>
+	<p>
   <%= label_tag(:q, "Word:") %>
   <%= text_field_tag(:q) %>
   <%= submit_tag("SpellCheck") %>
+	</p>
 <% end %>

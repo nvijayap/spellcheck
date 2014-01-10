@@ -1,0 +1,14 @@
+<br/>
+<%= form_tag("/spellcheck", method: "post") do %>
+  <% if params[:q] %>
+		<% if params[:yn] %>
+				<%= "'" + params[:q] + "' has passed Spell Check "%>
+			<% else %>
+				<%= "'" + params[:q] + "' has FAILED Spell Check "%>
+			<% end %>
+	<% end %>
+	<br/><br/>
+  <%= label_tag(:q, "Word:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("SpellCheck") %>
+<% end %>
